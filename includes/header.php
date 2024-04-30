@@ -26,6 +26,10 @@
                     <li class="nav-item">
                         <a class="nav-link" href="admin/index.php" style="color: white; font-size:bold;">Admin</a>
                     </li>
+                    <!-- <li class="nav-item">
+                        <a class="nav-link" href="../" style="color: white; font-size:bold;">MAp</a>
+                    </li> -->
+
                 </ul>
                 <?php
 

@@ -282,11 +282,12 @@ function add_order()
             $item_id = $_SESSION['cart'][$i]['item_id'];
             $user_id = $_SESSION['cart'][$i]['user_id'];
             $quantity = $_SESSION['cart'][$i]['quantity'];
+            $location = $_SESSION['delivery_location'];
             if ($quantity == 0) {
                 return;
             } else {
-                $query = "INSERT INTO orders (user_id,item_id,order_quantity,order_date) 
-                VALUES('$user_id','$item_id','$quantity','$date')";
+                $query = "INSERT INTO orders (user_id,item_id,order_quantity,order_date,location_link) 
+                VALUES('$user_id','$item_id','$quantity','$date','$location')";
                 $data =   single_query($query);
                 $item = get_item_id($item_id);
                 $new_quantity = $item[0]['item_quantity'] - $quantity;

@@ -75,7 +75,7 @@ include "includes/head.php";
 
         <?php
         }
-        edit_user($_SESSION['id']);
+        edit_user(isset($_SESSION['id']) ? $_SESSION['id'] : null);
 
         ?>
         <div class="table-responsive">
@@ -108,11 +108,12 @@ include "includes/head.php";
                     for ($i = 0; $i < $num; $i++) {
                     ?>
                         <tr>
-                            <td><?php echo $data[$i]['user_id'] ?></td>
-                            <td><?php echo $data[$i]['user_fname'] ?></td>
-                            <td><?php echo $data[$i]['user_lname'] ?></td>
-                            <td><?php echo $data[$i]['email'] ?></td>
-                            <td><?php echo $data[$i]['user_address'] ?></td>
+                            <td><?php echo isset($data[$i]['user_id']) ? $data[$i]['user_id'] : ''; ?></td>
+                            <td><?php echo isset($data[$i]['user_fname']) ? $data[$i]['user_fname'] : ''; ?></td>
+                            <td><?php echo isset($data[$i]['user_lname']) ? $data[$i]['user_lname'] : ''; ?></td>
+                            <td><?php echo isset($data[$i]['email']) ? $data[$i]['email'] : ''; ?></td>
+                            <td><?php echo isset($data[$i]['user_address']) ? $data[$i]['user_address'] : ''; ?></td>
+                            <td>
                             <td>
                                 <button type="button" class="btn pull-left btn-outline-warning"><a style="text-decoration: none; color:black;" href="customers.php?edit=<?php echo $data[$i]['user_id'] ?>">Edit</a></button>
                             </td>

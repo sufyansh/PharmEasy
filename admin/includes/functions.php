@@ -48,51 +48,53 @@ function get_redirect($url)
 // messages function (start)
 function message()
 {
-    if ($_SESSION['message'] == "loginErr") {
-        echo "   <div class='alert alert-danger' role='alert'>
-        There is no account with this email !!!
+    if (isset($_SESSION['message'])) {
+        if ($_SESSION['message'] == "loginErr") {
+            echo "   <div class='alert alert-danger' role='alert'>
+            There is no account with this email !!!
+          </div>";
+            unset($_SESSION['message']);
+        } elseif ($_SESSION['message'] == "emailErr") {
+            echo "   <div class='alert alert-danger' role='alert'>
+            The email address is already taken.  Please choose another
+          </div>";
+            unset($_SESSION['message']);
+        } elseif ($_SESSION['message'] == "loginErr1") {
+            echo "   <div class='alert alert-danger' role='alert'>
+            The email or password is wrong!
+          </div>";
+            unset($_SESSION['message']);
+        } elseif ($_SESSION['message'] == "noResult") {
+            echo "   <div class='alert alert-danger' role='alert'>
+            There is no user with this email address .
+          </div>";
+            unset($_SESSION['message']);
+        } elseif ($_SESSION['message'] == "itemErr") {
+            echo "   <div class='alert alert-danger' role='alert'>
+            There is a product with the same name .
+          </div>";
+            unset($_SESSION['message']);
+        } elseif ($_SESSION['message'] == "noResultOrder") {
+            echo "   <div class='alert alert-danger' role='alert'>
+            There is no order with this ID !!!
+          </div>";
+            unset($_SESSION['message']);
+        } elseif ($_SESSION['message'] == "noResultItem") {
+            echo "   <div class='alert alert-danger' role='alert'>
+            There is no product with this name !!!
+          </div>";
+            unset($_SESSION['message']);
+        } elseif ($_SESSION['message'] == "noResultAdmin") {
+            echo "   <div class='alert alert-danger' role='alert'>
+            There is no admin with this email !!!
+          </div>";
+            unset($_SESSION['message']);
+        } elseif ($_SESSION['message'] == "empty_err") {
+            echo "   <div class='alert alert-danger' role='alert'>
+        please don't leave anything empty !!!
       </div>";
-        unset($_SESSION['message']);
-    } elseif ($_SESSION['message'] == "emailErr") {
-        echo "   <div class='alert alert-danger' role='alert'>
-        The email address is already taken.  Please choose another
-      </div>";
-        unset($_SESSION['message']);
-    } elseif ($_SESSION['message'] == "loginErr1") {
-        echo "   <div class='alert alert-danger' role='alert'>
-        The email or password is wrong!
-      </div>";
-        unset($_SESSION['message']);
-    } elseif ($_SESSION['message'] == "noResult") {
-        echo "   <div class='alert alert-danger' role='alert'>
-        There is no user with this email address .
-      </div>";
-        unset($_SESSION['message']);
-    } elseif ($_SESSION['message'] == "itemErr") {
-        echo "   <div class='alert alert-danger' role='alert'>
-        There is a product with the same name .
-      </div>";
-        unset($_SESSION['message']);
-    } elseif ($_SESSION['message'] == "noResultOrder") {
-        echo "   <div class='alert alert-danger' role='alert'>
-        There is no order with this ID !!!
-      </div>";
-        unset($_SESSION['message']);
-    } elseif ($_SESSION['message'] == "noResultItem") {
-        echo "   <div class='alert alert-danger' role='alert'>
-        There is no product with this name !!!
-      </div>";
-        unset($_SESSION['message']);
-    } elseif ($_SESSION['message'] == "noResultAdmin") {
-        echo "   <div class='alert alert-danger' role='alert'>
-        There is no admin with this email !!!
-      </div>";
-        unset($_SESSION['message']);
-    } elseif ($_SESSION['message'] == "empty_err") {
-        echo "   <div class='alert alert-danger' role='alert'>
-    please don't leave anything empty !!!
-  </div>";
-        unset($_SESSION['message']);
+            unset($_SESSION['message']);
+        }
     }
 }
 // messages function (end)

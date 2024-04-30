@@ -42,6 +42,7 @@ include "includes/head.php";
                         <th scope="col">#</th>
                         <th scope="col">ID</th>
                         <th scope="col">User ID</th>
+                        <th scope="col">Location</th>
                         <th scope="col">product ID</th>
                         <th scope="col">Product quantity</th>
                         <th scope="col">Order date</th>
@@ -68,6 +69,7 @@ include "includes/head.php";
                             <td><?php echo $i ?></td>
                             <td><?php echo $data[$i]['order_id'] ?></td>
                             <td><?php echo $data[$i]['user_id'] ?></td>
+                            <td><?php echo $data[$i]['location_link'] ?></td>
                             <td><?php echo $data[$i]['item_id'] ?></td>
                             <td><?php echo $data[$i]['order_quantity'] ?></td>
                             <td><?php echo $data[$i]['order_date'] ?></td>
@@ -109,6 +111,10 @@ include "includes/head.php";
                             </td>
                             <td>
                                 <button type="button" class="btn  btn-outline-info"><a style="text-decoration: none; color:black;" href="products.php?id=<?php echo $data[$i]['item_id'] ?>">Product details</a></button>
+
+                            </td>
+                            <td>
+                                <button type="button" class="btn  btn-outline-info"><a style="text-decoration: none; color:black;" href="invoice.php?id=<?php echo $data[$i]['item_id'] ?>">Download PDF</a></button>
 
                             </td>
                         </tr>

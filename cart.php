@@ -8,7 +8,19 @@ include "includes/head.php"
 
     ?>
 
+<?php
+// Start the session
+// session_start();
 
+// Check if the form is submitted
+if ($_SERVER["REQUEST_METHOD"] == "POST") {
+    // Retrieve the link value from the form
+    $deliveryLocation = $_POST['deliveryLocation'];
+    
+    // Save the link in a session variable
+    $_SESSION['delivery_location'] = $deliveryLocation;
+}
+?>
     </div>
     <!-- PRODUCT header-->
     <div class="shopping" style="margin: 10px; border-bottom: 4px; font-weight: bold;">
@@ -68,6 +80,20 @@ include "includes/head.php"
                 }
             }
             ?>
+
+<!-- <form action="products.php" method="POST"> -->
+<form method="post" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>">
+    <div class="form-group">
+        <label for="validationTooltip01">Enter Link of Location where you want to Deliver</label>
+        <input pattern="[A-Za-z0-9_]{1,25}" id="validationTooltip01" type="text" class="form-control" placeholder="link...." value="<?php echo $_SESSION['delivery_location'] ?>" name="deliveryLocation">
+        <div class="form-text">Please enter the delivery location link (1-25 characters), special characters are not allowed.</div>
+    </div>
+    
+    <!-- <button type="submit" class="btn btn-primary">Save Link</button> -->
+</form>
+
+
+<!-- </form> -->
             <!-- end of PRODUCTS -->
             <!-- TOTAL -->
             <div class="shopping" style="margin: 10px; border-bottom: 4px; font-weight: bold;">
