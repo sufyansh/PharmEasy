@@ -428,6 +428,30 @@ function all_orders()
     $data = query($query);
     return $data;
 }
+function fetchInvoiceDataFromDB($id) {
+    // Implement your database connection
+
+    // Prepare SQL statement
+    $query = "SELECT * FROM orders WHERE item_id = $id";
+    $data = query($query);
+    return $data;
+}
+function fetchInvoiceDataFromDBItem($id) {
+    // Implement your database connection
+
+    // Prepare SQL statement
+    $query = "SELECT * FROM item WHERE item_id = $id";
+    $data = query($query);
+    return $data;
+}
+function fetchInvoiceDataFromDBUser($id) {
+    // Implement your database connection
+
+    // Prepare SQL statement
+    $query = "SELECT * FROM user WHERE user_id = $id";
+    $data = query($query);
+    return $data;
+}
 function search_order()
 {
     if (isset($_GET['search_order'])) {

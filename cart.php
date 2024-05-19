@@ -10,7 +10,7 @@ include "includes/head.php"
 
 <?php
 // Start the session
-// session_start();
+session_start();
 
 // Check if the form is submitted
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
@@ -85,11 +85,11 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 <form method="post" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>">
     <div class="form-group">
         <label for="validationTooltip01">Enter Link of Location where you want to Deliver</label>
-        <input pattern="[A-Za-z0-9_]{1,25}" id="validationTooltip01" type="text" class="form-control" placeholder="link...." value="<?php echo $_SESSION['delivery_location'] ?>" name="deliveryLocation">
+        <input id="validationTooltip01" type="text" class="form-control" placeholder="link...." value="<?php echo isset($_SESSION['delivery_location']) ? $_SESSION['delivery_location'] : ''; ?>" name="deliveryLocation">
         <div class="form-text">Please enter the delivery location link (1-25 characters), special characters are not allowed.</div>
     </div>
     
-    <!-- <button type="submit" class="btn btn-primary">Save Link</button> -->
+    <button type="submit" class="btn btn-primary">Save Link</button>
 </form>
 
 
@@ -117,7 +117,14 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             <div style="margin-left: 350px; padding-right: 100px;">
                 <a href="cart.php?delete_all=1" class="btn btn-outline-danger btn-lg"> Delete all Products !</a>
                 &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
-                <a href="final.php?order=done" class="btn btn-outline-success btn-lg"> &nbsp;Proceed to Buy &nbsp;</a>
+                <?php
+    // Check if delivery location is empty
+    if (empty($_SESSION['delivery_location'])) {
+        echo '<button class="btn btn-outline-success btn-lg" disabled>Proceed to Buy (Save Location First)</button>';
+    } else {
+        echo '<a href="final.php?order=done" class="btn btn-outline-success btn-lg">Proceed to Buy</a>';
+    }
+    ?>
                 <br><br>
             </div>
         <?php

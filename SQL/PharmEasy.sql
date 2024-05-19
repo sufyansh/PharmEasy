@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 5.1.0
+-- version 5.1.1
 -- https://www.phpmyadmin.net/
 --
--- Host: localhost
--- Generation Time: Mar 23, 2022 at 10:34 PM
--- Server version: 10.4.18-MariaDB
--- PHP Version: 8.0.3
+-- Host: 127.0.0.1
+-- Generation Time: May 02, 2024 at 09:57 AM
+-- Server version: 10.4.22-MariaDB
+-- PHP Version: 8.1.1
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -18,7 +18,7 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Database: `PharmEasy`
+-- Database: `pharmeasy`
 --
 
 -- --------------------------------------------------------
@@ -90,15 +90,16 @@ INSERT INTO `item` (`item_id`, `item_title`, `item_brand`, `item_cat`, `item_det
 (37, 'Kamasutra Urge Men Deodorant Spray, 150 ml', 'Kamasutra', 'self-care', 'Kamasutra Deodorant comes with an irresistible formula making you stand out in the crowd', 'Kamasutra Urge Men Deodorant Spray, 150 ml', 'Kamasutra Urge Men Deodorant Spray, 150 ml.jpeg', 49, 105),
 (38, 'Himalaya Geriforte Syrup 200 ml', 'Himalaya', 'medicine', 'The natural ingredients in Geriforte work synergistically to prevent free radical-induced oxidative damage to various organs.', 'Himalaya Geriforte Syrup 200 ml', 'Himalaya Geriforte Syrup 200 ml.jpeg', 50, 125),
 (43, 'Eno Regular Flavoured Powder, 5 gm', 'Eno', 'medicine', 'Eno helps in neutralizing the acid in your stomach. It gets to work in 6 seconds.', 'Eno Regular Flavoured Powder, 5 gm', 'Eno Regular Flavoured Powder, 5 gm.jpeg', 50, 19),
-(44, 'Benadryl Cough Formula Syrup 150 ml', 'Benadryl', 'medicine', 'Benadryl Syrup is used in the treatment of cough, and also, relieves allergy symptoms such as runny nose, stuffy nose, sneezing, watery eyes and congestion or stuffiness', 'Benadryl Cough Formula Syrup 150 ml', 'Benadryl Cough Formula Syrup 150 ml.jpeg', 50, 115),
+(44, 'Benadryl Cough Formula Syrup 150 ml', 'Benadryl', 'medicine', 'Benadryl Syrup is used in the treatment of cough, and also, relieves allergy symptoms such as runny nose, stuffy nose, sneezing, watery eyes and congestion or stuffiness', 'Benadryl Cough Formula Syrup 150 ml', 'Benadryl Cough Formula Syrup 150 ml.jpeg', 48, 115),
 (45, 'Zinda Tilismath Unani Medicine, 5 ml', 'Zinda', 'medicine', 'Zinda Tilismath is a 100% herbal medicine, used to treat many common ailments like cold, cough, and more .', 'Zinda Tilismath Unani Medicine, 5 ml', 'Zinda Tilismath Unani Medicine, 5 ml.jpeg', 50, 119),
-(46, 'Dee Snor Anti Snoring Syrup 100 ml', 'Dee Snor', 'medicine', 'Dee Snor is the best Anti - Snoring Syrup which not only controls snoring but also gives relief from Asthma. It contains 100% Natural and Herbal ingredients like Kantakari, Vasa, Honey, Triphala, Aswagandha and Sankabhasma etc. A Product with zero side effects. Directions For use: Take 10ml daily (with out diluting with water) 30 minutes before going to bed for 60 days.', 'Dee Snor Anti Snoring Syrup 100 ml', 'Dee Snor Anti Snoring Syrup 100 ml.jpeg', 50, 174),
+(46, 'Dee Snor Anti Snoring Syrup 100 ml', 'Dee Snor', 'medicine', 'Dee Snor is the best Anti - Snoring Syrup which not only controls snoring but also gives relief from Asthma. It contains 100% Natural and Herbal ingredients like Kantakari, Vasa, Honey, Triphala, Aswagandha and Sankabhasma etc. A Product with zero side effects. Directions For use: Take 10ml daily (with out diluting with water) 30 minutes before going to bed for 60 days.', 'Dee Snor Anti Snoring Syrup 100 ml', 'Dee Snor Anti Snoring Syrup 100 ml.jpeg', 44, 174),
 (47, 'Himalaya Himplasia, 30 Tablets', 'Himalaya', 'medicine', 'Himalaya Himplasia Tablet is a formulation that promotes optimum prostate health, urogenital function, bladder function, and reproductive function. Himplasia is a non-hormonal herbal blend that helps maintain a healthy prostate and an effective reproductive function.', 'Himalaya Himplasia, 30 Tablets', 'Himalaya Himplasia, 30 Tablets.jpeg', 50, 160),
-(48, 'Himalaya Punarnava, 60 Capsules', 'Himalaya', 'medicine', 'It is an ayurvedic medicine, containing punarnava as an active ingredient that helps to support the urinary system, protect the kidney, soothe and calm the urinary tract.', 'Himalaya Punarnava, 60 Capsules', 'Himalaya Punarnava, 60 Capsules.jpeg', 50, 152),
+(48, 'Himalaya Punarnava, 60 Capsules', 'Himalaya', 'medicine', 'It is an ayurvedic medicine, containing punarnava as an active ingredient that helps to support the urinary system, protect the kidney, soothe and calm the urinary tract.', 'Himalaya Punarnava, 60 Capsules', 'Himalaya Punarnava, 60 Capsules.jpeg', 49, 152),
 (49, 'Himalaya Diabecon DS ,60 Tablets', 'Himalaya', 'medicine', 'Himalaya diabecon DS tablet helps in the management of diabetes. It is a formulation of an ayurvedic medicine, which has antidiabetic properties. Gymnema, Indian kino tree, shilajeet plays a vital role.', 'Himalaya Diabecon DS ,60 Tablets', 'Himalaya Diabecon DS ,60 Tablets.jpeg', 50, 152),
 (50, 'Mylab CoviSelf COVID-19 Rapid Antigen Self Test Kit', 'Mylab', 'machine', 'Mylab CoviSelf COVID-19 Rapid Antigen Self Test Kit is designed to assist you in taking a safe rapid antigen test easily at the comfort of your home. Get your and your family’s immediate COVID-19-19 Rapid Antigen test done quickly and hassle-free with this self-assessing kit. Now you can get tested for COVID-19 in just 15 minutes with this test kit.', 'Mylab CoviSelf COVID-19 Rapid Antigen Self Test Kit', 'Mylab CoviSelf COVID-19 Rapid Antigen Self Test Kit.jpeg', 50, 452),
 (51, 'Limcee Vitamin C 500 mg Orange Flavour Chewable, 15 Tablets', 'ABBOTT', 'medicine', 'Limcee Vitamin C 500 mg Orange Flavour Chewable, 15 Tablets belongs to a class of medicines called nutritional supplements used to prevent and treat nutritional deficiencies and vitamin C deficiency. A nutritional deficiency occurs when the body does not absorb or get enough nutrients from food. Vitamins and minerals are necessary for body development and the prevention of diseases.', 'Limcee Vitamin C 500 mg Orange Flavour Chewable, 15 Tablets', 'Limcee Vitamin C 500 mg Orange Flavour Chewable, 15 Tablets.jpeg', 50, 20),
-(52, 'GNC PRO Performance L-Carnitine 500 mg, 60 Capsules', 'PRO', 'medicine', 'GNC PRO Performance L-Carnitine delivers 500 mg of important nutrients in each serving which helps in weight loss and facilitates muscle recovery. L-carnitine is a non-essential amino acid that can be synthesized in the body. Now get your daily dose of this essential nutrient and improve muscle growth and recovery as you consume these capsules.', 'GNC PRO Performance L-Carnitine 500 mg, 60 Capsules', 'GNC PRO Performance L-Carnitine 500 mg, 60 Capsules.jpeg', 60, 1049);
+(52, 'GNC PRO Performance L-Carnitine 500 mg, 60 Capsules', 'PRO', 'medicine', 'GNC PRO Performance L-Carnitine delivers 500 mg of important nutrients in each serving which helps in weight loss and facilitates muscle recovery. L-carnitine is a non-essential amino acid that can be synthesized in the body. Now get your daily dose of this essential nutrient and improve muscle growth and recovery as you consume these capsules.', 'GNC PRO Performance L-Carnitine 500 mg, 60 Capsules', 'GNC PRO Performance L-Carnitine 500 mg, 60 Capsules.jpeg', 60, 1049),
+(56, 'SA', 'Sa', 'medicine', 'xyz', 'SA', 'WhatsApp Image 2024-04-26 at 1.59.14 AM.jpeg', 1, 50);
 
 -- --------------------------------------------------------
 
@@ -108,6 +109,7 @@ INSERT INTO `item` (`item_id`, `item_title`, `item_brand`, `item_cat`, `item_det
 
 CREATE TABLE `orders` (
   `order_id` int(11) NOT NULL,
+  `location_link` varchar(300) DEFAULT NULL,
   `item_id` int(11) NOT NULL,
   `user_id` int(11) NOT NULL,
   `order_quantity` int(3) NOT NULL,
@@ -119,14 +121,9 @@ CREATE TABLE `orders` (
 -- Dumping data for table `orders`
 --
 
-INSERT INTO `orders` (`order_id`, `item_id`, `user_id`, `order_quantity`, `order_date`, `order_status`) VALUES
-(210, 27, 85, 1, '2022-03-18', 1),
-(211, 18, 85, 1, '2022-03-18', 1),
-(212, 28, 85, 1, '2022-03-18', 0),
-(213, 33, 55, 2, '2022-03-19', 0),
-(214, 20, 55, 2, '2022-03-19', 0),
-(215, 37, 55, 1, '2022-03-19', 0),
-(216, 31, 55, 4, '2022-03-19', 0);
+INSERT INTO `orders` (`order_id`, `location_link`, `item_id`, `user_id`, `order_quantity`, `order_date`, `order_status`) VALUES
+(220, 'wdddasdas', 48, 55, 1, '2024-04-27', 0),
+(221, 'wdddasdas', 46, 55, 1, '2024-04-27', 0);
 
 -- --------------------------------------------------------
 
@@ -165,7 +162,6 @@ INSERT INTO `user` (`user_Lname`, `email`, `user_password`, `user_id`, `user_fna
 ('Narasimhan', 'puja@gmail.com', 'wxFuAK3Gxt', 79, 'Puja', 'Shop No.14, Janata Mkt, Nr Rly Stn, Chembur  Mumbai, Maharashtra, 400071'),
 ('Rajagopal', 'vasu@gmail.com', 'C5UFaSsBdB', 80, 'Vasu', '458/2a, Hanuman Road  Delhi, Delhi, 110017'),
 ('Goyal', 'jyotsna@gmail.com', 'Rr7dnSuCuM', 81, 'Jyotsna', '33 Dahanukar Bldg, 480 Kalbadevi Road, Kalbadevi  Mumbai, Maharashtra, 400002'),
-('Saxena', 'yash@gmail.com', 'HMFRn2RnTv', 82, 'Yash', '14, 50 Rd, Muneshwara Block  Bangalore, Karnataka, 560026'),
 ('Setty', 'subhash@gmail.com', '5L4xSHcWEu', 83, 'Subhash', 'R No 15 1st Flr, No 23, Bhupat Bhavan, Vaju Kotak Marg, Ballard Estate  Mumbai, Maharashtra, 400038'),
 ('Sankar', 'narendra@gmail.com', 'YrkMMgsg84', 84, 'Narendra', '194/1/7, G. T. Road, Salkia  Kolkata, West Bengal, 711106'),
 ('Vala', 'kalind3a@gmail.com', '5Kalinda', 85, 'Arjun', '3887/1, Military Road Chowk, Anand Parbat  Delhi, Delhi, 110005');
@@ -214,13 +210,13 @@ ALTER TABLE `admin`
 -- AUTO_INCREMENT for table `item`
 --
 ALTER TABLE `item`
-  MODIFY `item_id` int(5) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=56;
+  MODIFY `item_id` int(5) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=57;
 
 --
 -- AUTO_INCREMENT for table `orders`
 --
 ALTER TABLE `orders`
-  MODIFY `order_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=217;
+  MODIFY `order_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=222;
 
 --
 -- AUTO_INCREMENT for table `user`

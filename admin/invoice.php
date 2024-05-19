@@ -1,94 +1,104 @@
 <?php
-// Include the TCPDF library
-require_once('C:/xampp/htdocs/PharmEasy/lib/tcpdf/tcpdf.php');
-
-
-$num = ''; // Initialize $num
+include "includes/functions.php";
+require_once('C:/xampp/htdocs/PharmEasy/lib/tcpdf/tcpdf.php'); 
 
 if (isset($_GET['id'])) {
-    $data = get_item_details($_GET['id']); // Call a function to get item details
-    $num = sizeof($data); // Get the size of the returned data
-}
+    // Get the ID from the URL
+    $id = $_GET['id'];
+    
+    // Fetch invoice data from the database based on the ID
+    $invoiceData = fetchInvoiceDataFromDB($id); 
 
-function fetchInvoiceDataFromDB() {
+    if ($invoiceData === null || empty($invoiceData)) {
+        echo "Invoice data not found for ID: $id";
+        exit; // Terminate script
+    }
 
-    // Check if 'id' is set in $_GET
+    // Fetch item and user data
+    $itemID = fetchInvoiceDataFromDBItem($invoiceData[0]['item_id']);
+    $userID = fetchInvoiceDataFromDBUser($invoiceData[0]['user_id']);
+    
+    if ($itemID === null || $userID === null) {
+        echo "Item or User data not found.";
+        exit; // Terminate script
+    }
+    
   
-    // Implement your database connection and query to fetch invoice data
-    // For demonstration purposes, I'll just return sample data
-    $invoiceData = array(
-        'invoice_number' => $num,
-        'date' => date('Y-m-d'),
-        'items' => array(
-            array('name' => 'Item 1', 'quantity' => 1, 'price' => 10.00),
-            array('name' => 'Item 2', 'quantity' => 2, 'price' => 5.00)
-        )
-    );
 
-    return $invoiceData;
-}
+    // Create a new TCPDF instance
+    $pdf = new TCPDF(PDF_PAGE_ORIENTATION, PDF_UNIT, PDF_PAGE_FORMAT, true, 'UTF-8', false);
 
-// Fetch invoice data from the database
-$invoiceData = fetchInvoiceDataFromDB();
+    // Set document information
+    $pdf->SetCreator('Your Company');
+    $pdf->SetAuthor('Your Name');
+    $pdf->SetTitle('Invoice');
+    $pdf->SetSubject('Invoice');
+    $pdf->SetKeywords('Invoice, PDF, Example');
 
-// Create a new TCPDF instance
-$pdf = new TCPDF(PDF_PAGE_ORIENTATION, PDF_UNIT, PDF_PAGE_FORMAT, true, 'UTF-8', false);
+    // Add a page
+    $pdf->AddPage();
 
-// Set document information
-$pdf->SetCreator('Your Company');
-$pdf->SetAuthor('Your Name');
-$pdf->SetTitle('Invoice');
-$pdf->SetSubject('Invoice');
-$pdf->SetKeywords('Invoice, PDF, Example');
+    // Build HTML for invoice
+    $html = '
+        <h1>Invoice</h1>
+        <p>Invoice Number: ' . $invoiceData[0]['order_id'] . '</p>
+        <p>Date: ' . $invoiceData[0]['order_date'] . '</p>
+        <table border="1">
+            <tr>
+                <th>Item</th>
+                <th>Brand</th>
+                <th>Category</th>
+                <th>Detail</th>
+                <th>Quantity</th>
+                <th>Price</th>
+                <th>Total</th>
+            </tr>';
 
-// Add a page
-$pdf->AddPage();
+    // Calculate total amount
+    $totalAmount = 0;
 
-// Build HTML for invoice
-$html = '
-    <h1>Invoice</h1>
-    <p>Invoice Number: ' . $invoiceData['invoice_number'] . '</p>
-    <p>Date: ' . $invoiceData['date'] . '</p>
-    <table border="1">
-        <tr>
-            <th>Item</th>
-            <th>Quantity</th>
-            <th>Price</th>
-            <th>Total</th>
-        </tr>';
+    // Check if 'items' key exists and is an array
+    if (is_array($itemID)) {
+        // Loop through items
+        foreach ($itemID as $item) {
+            $total = $item['item_quantity'] * $item['item_price'];
+            $totalAmount += $total;
+            // Add item row to HTML
+            $html .= '
+                <tr>
+                    <td>' . $item['item_title'] . '</td>
+                    <td>' . $item['item_brand'] . '</td>
+                    <td>' . $item['item_cat'] . '</td>
+                    <td>' . $item['item_details'] . '</td>
+                    <td>' . $item['item_quantity'] . '</td>
+                    <td>$' . number_format($item['item_price'], 2) . '</td>
+                    <td>$' . number_format($total, 2) . '</td>
+                </tr>';
+        }
+    } else {
+        echo "No items found for the invoice.";
+        exit; // Terminate script
+    }
 
-// Calculate total amount
-$totalAmount = 0;
-
-// Loop through items
-foreach ($invoiceData['items'] as $item) {
-    $total = $item['quantity'] * $item['price'];
-    $totalAmount += $total;
-
-    // Add item row to HTML
+    // Add total row to HTML
     $html .= '
-        <tr>
-            <td>' . $item['name'] . '</td>
-            <td>' . $item['quantity'] . '</td>
-            <td>$' . number_format($item['price'], 2) . '</td>
-            <td>$' . number_format($total, 2) . '</td>
-        </tr>';
+            <tr>
+                <td colspan="6" align="right"><strong>Total:</strong></td>
+                <td>$' . number_format($totalAmount, 2) . '</td>
+            </tr>
+        </table>';
+
+    // Write the HTML content to the PDF
+    $pdf->writeHTML($html, true, false, true, false, '');
+
+    // Close and output PDF
+    $pdf->Output('invoice.pdf', 'D');
+
+    // Terminate script
+    exit;
+} else {
+    echo "ID not provided.";
 }
-
-// Add total row to HTML
-$html .= '
-        <tr>
-            <td colspan="3" align="right"><strong>Total:</strong></td>
-            <td>$' . number_format($totalAmount, 2) . '</td>
-        </tr>
-    </table>';
-
-// Write the HTML content to the PDF
-$pdf->writeHTML($html, true, false, true, false, '');
-
-// Close and output PDF
-$pdf->Output('invoice.pdf', 'D');
-
 // Terminate script
 exit;
 ?>
